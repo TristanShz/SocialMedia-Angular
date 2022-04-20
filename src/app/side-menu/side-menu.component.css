@@ -1,0 +1,37 @@
+#sideMenu{
+  background: rgba(210, 195, 168, 0.3);
+  width: 25%;
+  height: 100%;
+  display: flex;
+  min-width: 300px;
+  flex-direction: column;
+  padding-top: 2%;
+  position: fixed;
+  filter: drop-shadow(8px 4px 8px rgba(139, 132, 163, 0.3));
+}
+
+#sideMenu:hover{
+
+}
+#sideMenu a:hover{
+  cursor: pointer;
+  transform: translate(5px, 0);
+}
+#sideMenu img{
+  align-self: center;
+}
+
+#userInfos{
+  display: flex;
+  align-self: center;
+  margin-bottom: 35px;
+}
+#userInfos h1{
+  margin: 0 5px;
+}
+
+#sideMenu a{
+  margin-left: 20px;
+  text-decoration: none;
+  color: #1E1E1E;
+}
