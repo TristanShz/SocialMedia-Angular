@@ -1,0 +1,29 @@
+#content{
+  display:flex;
+  height: 100%;
+}
+
+#right-content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width:75%;
+  position: absolute;
+  right: 0;
+  padding-block-start: 60px;
+}
+
+.user{
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+  width: 800px;
+  height: 75px;
+  padding-left: 15px;
+  margin-bottom: 30px;
+  display: flex;
+}
+.user h1{
+  margin-left: 20px;
+}
+
+
