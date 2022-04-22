@@ -63,4 +63,6 @@ input:focus{
   margin-bottom: 30px;
   padding-right: 15px;
   box-sizing: border-box;
+  display:flex;
+  align-items: center;
 }

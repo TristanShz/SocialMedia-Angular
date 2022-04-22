@@ -12,19 +12,23 @@ export class UserConnectedService {
     })
   };
   userConnected?:userInterface;
+  user = JSON.parse(localStorage.getItem("user")!);
   constructor(private http:HttpClient) {
   }
-  getUser(id:number, token:string){
-
-    const headers = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer '+ token,
-      })
+  getUser(){
+    if(this.user.token) {
+      const headers = {
+        headers: new HttpHeaders({
+          'Authorization': 'Bearer ' + this.user.token,
+        })
+      }
+      return this.http.get<userInterface>(this.urlBase + `/${this.user.id}`, headers)
+        .subscribe(user => {
+          this.userConnected = user;
+        });
+    }else{
+      return 0;
     }
-    return this.http.get<userInterface>(this.urlBase + `/${id}`, headers)
-      .subscribe(user => {
-        this.userConnected = user;
-      });
   }
 
 }

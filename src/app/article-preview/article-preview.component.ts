@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ArticleService } from "../article.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-article-preview',
@@ -8,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class ArticlePreviewComponent implements OnInit {
 
   articleList:{title: string, content: string}[]
-  constructor() {
+  constructor(public articleService:ArticleService, private router:Router) {
     this.articleList = [
       {
         title: "Title",
@@ -43,5 +45,7 @@ export class ArticlePreviewComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  goToArticle(id:number){
+    this.router.navigate(["/article/"+ id]);
+  }
 }

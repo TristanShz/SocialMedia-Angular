@@ -8,7 +8,6 @@ import { userInterface } from "../Interfaces/userInterface";
   styleUrls: ['./side-menu.component.css']
 })
 export class SideMenuComponent implements OnInit{
-  @Input() user?:object;
 
   constructor(public userConnectedService: UserConnectedService) {
   }

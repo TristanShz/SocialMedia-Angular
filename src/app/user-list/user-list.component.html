@@ -1,37 +1,8 @@
 <div id="content">
   <app-side-menu></app-side-menu>
   <div id="right-content">
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
-    </div>
-    <div class="user">
-      <h1>FirstName</h1>
-      <h1>LasttName</h1>
+    <div class="user" *ngFor="let user of userList">
+      <h1>{{user?.pseudo}}</h1>
     </div>
   </div>
 
