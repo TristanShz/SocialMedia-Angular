@@ -1,10 +1,10 @@
 <div>
   <h1>Se connecter</h1>
-  <form action="">
-    <input type="text" name="email" id="" placeholder="Email">
-    <input type="text" name="password" id="" placeholder="Mot de passe">
+  <form action="" #user="ngForm" (ngSubmit)="loginUser(user)">
+    <input type="text" name="email" id="" placeholder="Email" ngModel>
+    <input type="text" name="password" id="" placeholder="Mot de passe" ngModel>
     <button>Se connecter</button>
   </form>
 
-  <p>Vous n'avez pas de compte ? <u>Créer un compte</u></p>
+  <p>Vous n'avez pas de compte ? <a routerLink="/">Créer un compte</a></p>
 </div>

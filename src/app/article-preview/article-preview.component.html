@@ -1,8 +1,8 @@
-<div id="article" *ngFor="let article of articleList">
+<div id="article" *ngFor="let article of articleList" routerLink="/article">
   <div>
     <h2>{{article.title}}</h2>
     <p>{{article.content}}</p>
   </div>
 
-  <a routerLink="/article"><img src="./assets/rightArrow.png" alt=""></a>
+  <a ><img src="./assets/rightArrow.png" alt=""></a>
 </div>

@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule} from "@angular/forms";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,6 +12,7 @@ import { SideMenuComponent } from './side-menu/side-menu.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 import { ArticleComponent } from './article/article.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -20,11 +23,14 @@ import { UserListComponent } from './user-list/user-list.component';
     SideMenuComponent,
     ArticlePreviewComponent,
     ArticleComponent,
-    UserListComponent
+    UserListComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

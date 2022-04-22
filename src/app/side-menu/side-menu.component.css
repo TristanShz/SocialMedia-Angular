@@ -35,3 +35,7 @@
   text-decoration: none;
   color: #1E1E1E;
 }
+
+#userInfos:hover{
+  cursor:pointer;
+}
