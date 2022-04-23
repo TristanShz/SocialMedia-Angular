@@ -9,9 +9,11 @@ import {CommentsInterface} from "./Interfaces/commentsInterface";
 })
 export class CommentsService {
   urlBase = "https://reseau.jdedev.fr/api/article"
+  urlComment = "https://reseau.jdedev.fr/api/comment"
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + this.userConnected.user.token,
     })
   };
   articlesList?:Array<ArticlesInterface>;
@@ -20,7 +22,7 @@ export class CommentsService {
   addComment(comment:object){
     const body = JSON.stringify(comment);
     console.log(body);
-    return this.http.post(this.urlBase, body, this.httpOptions);
+    return this.http.post(this.urlComment, body, this.httpOptions);
   }
 
   getComment(id:number){
@@ -32,12 +34,7 @@ export class CommentsService {
       return this.http.get<Array<CommentsInterface>>(this.urlBase + `/${id}/comment`, headers)
   }
 
-  getOneArticle(id:number){
-    const headers = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + this.userConnected.user.token,
-      })
-    }
-    return this.http.get<ArticlesInterface>(this.urlBase+ `/${id}`, headers)
+  deleteComment(id:number){
+    return this.http.delete(this.urlComment + `/${id}`, this.httpOptions);
   }
 }

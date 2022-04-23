@@ -16,7 +16,7 @@
   width: 800px;
   height: 1px;
   background-color: #1E1E1E;
-  margin: 75px 0;
+  margin-bottom: 75px;
 }
 p{
   max-width: 800px;
@@ -46,12 +46,13 @@ h1{
 input:focus{
   outline:none;
 }
-#addComment a{
+#addComment button{
   align-self: center;
   margin-right: 25px;
-
+  border: none;
+  background:none;
 }
-#addComment a:hover{
+#addComment button:hover{
   cursor:pointer;
 }
 #comment{
@@ -65,4 +66,21 @@ input:focus{
   box-sizing: border-box;
   display:flex;
   align-items: center;
+  justify-content: space-between;
+}
+#deleteArticle{
+  color:red;
+  text-decoration: underline;
+  margin-top: 60px;
+}
+#deleteArticle:hover{
+  cursor:pointer;
+}
+
+#deleteComment{
+  color:red;
+  text-decoration: underline;
+}
+#deleteComment:hover{
+  cursor:pointer;
 }

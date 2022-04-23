@@ -3,16 +3,19 @@
   <div id="right-content">
     <h1>{{currentArticle?.titre}}</h1>
     <p>{{currentArticle?.contenu}}</p>
+    <p id="deleteArticle" *ngIf="currentArticle?.id === userConnected.user.id" (click)="deleteArticle(currentArticle.id)">
+      Supprimer l'article</p>
     <div id="line"></div>
 
     <h1>Commentaires</h1>
 
-    <div id="addComment">
-      <input type="text" name="" id="" placeholder="Ajouter un commentaire">
-      <a><img src="assets/sendComment.png" alt=""></a>
-    </div>
+      <form action="" id="addComment" #userForm="ngForm" (ngSubmit)="addComment(userForm)">
+        <input type="text" name="contenu" id="" placeholder="Ajouter un commentaire" ngModel>
+        <button><img src="assets/sendComment.png" alt=""></button>
+      </form>
     <div id="comment" *ngFor="let comment of comments">
       <p>{{comment.contenu}}</p>
+      <p id="deleteComment" *ngIf="comment.id === userConnected.user.id" (click)="deleteComment(comment.id_commentaire)">supprimer</p>
   </div>
 
 </div>
