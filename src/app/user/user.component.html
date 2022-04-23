@@ -1,7 +1,29 @@
 <div id="content">
   <app-side-menu></app-side-menu>
   <div id="right-content">
-
+    <div id="userDesc">
+      <img src="./assets/user2.png" alt="">
+      <div id="userInfos">
+        <h1>{{currentUser?.pseudo}}</h1>
+        <h2>{{currentUser?.email}}</h2>
+      </div>
+    </div>
+    <div id="bottomBlock">
+      <div id="lastArticles">
+        <h1>5 Derniers Articles : </h1>
+        <div id="article" *ngFor="let article of lastArticles; let index = index">
+          <h3 *ngIf="index <5">{{article.titre}}</h3>
+          <p *ngIf="index <5">{{article.contenu}}</p>
+        </div>
+      </div>
+      <div id="line"></div>
+      <div id="lastComments">
+        <h1>5 Derniers Commentaires : </h1>
+        <div id="comment" *ngFor="let comment of lastComments; let index = index">
+          <p *ngIf="index <5">{{comment.contenu}}</p>
+        </div>
+      </div>
+  </div>
   </div>
 </div>
 

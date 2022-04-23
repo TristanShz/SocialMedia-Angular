@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user.service";
 import {ActivatedRoute} from "@angular/router";
+import {UserConnectedService} from "../user-connected.service";
+import {userInterface} from "../Interfaces/userInterface";
+import {ArticlesInterface} from "../Interfaces/articlesInterface";
+import {CommentsInterface} from "../Interfaces/commentsInterface";
 
 @Component({
   selector: 'app-user',
@@ -9,7 +13,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class UserComponent implements OnInit {
   idUser:number;
-  constructor(private userService:UserService, private route:ActivatedRoute) {
+  currentUser!:userInterface;
+  lastArticles!:Array<ArticlesInterface>;
+  lastComments!:Array<CommentsInterface>;
+  constructor(private userService:UserService, private route:ActivatedRoute, public userConnected:UserConnectedService) {
     this.idUser = 0
   }
 
@@ -20,7 +27,15 @@ export class UserComponent implements OnInit {
     });
     this.userService.getUser(this.idUser)
       .subscribe(user => {
-
+        this.currentUser = user;
+      })
+    this.userService.getUserArticles(this.idUser)
+      .subscribe(articles =>{
+        this.lastArticles= articles.slice(0,5);
+      })
+    this.userService.getUserComments(this.idUser)
+      .subscribe(comments =>{
+        this.lastComments = comments.slice(0,5);
       })
   }
 

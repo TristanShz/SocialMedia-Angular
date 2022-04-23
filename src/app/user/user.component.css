@@ -1,0 +1,56 @@
+#content{
+  display:flex;
+  height: 100%;
+}
+
+#right-content{
+  display: flex;
+  flex-direction: column;
+  width:75%;
+  position: absolute;
+  right: 0;
+}
+
+img{
+  width: 300px;
+  height: 300px;
+}
+
+#userDesc{
+  display:flex;
+  margin-top: 30px;
+}
+
+#userInfos{
+  margin-top: 30px;
+}
+
+#line{
+  height: auto;
+  width: 1px;
+  background: black;
+  margin: 0 30px;
+}
+
+#bottomBlock{
+  display: flex;
+  margin: 0 30px;
+}
+
+#article{
+width: 500px;
+  height:auto;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.6);
+  padding: 35px 35px;
+  margin-bottom: 15px;
+}
+
+#comment{
+  width: 500px;
+  height:auto;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.6);
+  padding: 35px 35px;
+  margin-bottom: 15px;
+}

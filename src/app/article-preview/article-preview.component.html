@@ -2,6 +2,9 @@
   <div>
     <h2>{{article.titre}}</h2>
     <p>{{article.contenu}}</p>
+    <div *ngFor="let user of userService.userList" id="author">
+      <p *ngIf="article.id === user.id" (click)="goToUser(user.id)">{{user.pseudo}}</p>
+    </div>
   </div>
 
   <a><img src="./assets/rightArrow.png" alt=""></a>

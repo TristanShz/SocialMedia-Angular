@@ -1,8 +1,9 @@
 <div id="sideMenu">
   <img src="./assets/user.png" alt="">
   <div id="userInfos" routerLink="/user">
-    <h1>{{userConnectedService.userConnected?.pseudo}}</h1>
+    <h1 (click)="goToUser(userConnectedService.userConnected?.id)">{{userConnectedService.userConnected?.pseudo}}</h1>
   </div>
   <a routerLink="/home"><h1 style="color: #8B84A3">Mon mur</h1></a>
   <a routerLink="/userlist"><h1>Liste des utilisateurs</h1></a>
+  <img src="./assets/logout.png" id="disconnected" (click)="disconnect()">
 </div>

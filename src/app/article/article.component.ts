@@ -67,8 +67,8 @@ export class ArticleComponent implements OnInit {
       })
   }
 
-  deleteArticle(commentId:number){
-    this.articleService.deleteArticle(commentId)
+  deleteArticle(articleId:number){
+    this.articleService.deleteArticle(articleId)
       .subscribe(data => {
         this.router.navigate(["/home"]);
       })

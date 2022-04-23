@@ -31,3 +31,10 @@ h2:hover{
 #article a:hover{
   transform: scale(1.2,1.2);
 }
+
+#author{
+  font-weight: bold;
+  text-decoration: underline;
+  color: #8B84A3;
+}
+

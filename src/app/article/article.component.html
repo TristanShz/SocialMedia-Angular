@@ -3,7 +3,7 @@
   <div id="right-content">
     <h1>{{currentArticle?.titre}}</h1>
     <p>{{currentArticle?.contenu}}</p>
-    <p id="deleteArticle" *ngIf="currentArticle?.id === userConnected.user.id" (click)="deleteArticle(currentArticle.id)">
+    <p id="deleteArticle" *ngIf="currentArticle?.id === userConnected.user.id" (click)="deleteArticle(currentArticle.id_article)">
       Supprimer l'article</p>
     <div id="line"></div>
 

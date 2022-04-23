@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserService} from "../user.service";
 import {userInterface} from "../Interfaces/userInterface";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-list',
@@ -8,15 +9,12 @@ import {userInterface} from "../Interfaces/userInterface";
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  userList?:Array<userInterface>
-  constructor(private userService:UserService) { }
+  userList!:Array<userInterface>
+  constructor(public userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
-    this.userService.getAllUsers()
-      .subscribe(userList => {
-        console.log(userList);
-        this.userList = userList;
-      })
   }
-
+  goToUser(id:number){
+    this.router.navigate(["/user/"+ id]);
+  }
 }

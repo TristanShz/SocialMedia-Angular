@@ -1,8 +1,9 @@
 <div id="content">
   <app-side-menu></app-side-menu>
   <div id="right-content">
-    <div class="user" *ngFor="let user of userList">
+    <div class="user" *ngFor="let user of userService.userList" (click)="goToUser(user.id)">
       <h1>{{user?.pseudo}}</h1>
+      <img src="./assets/rightArrow.png" alt="">
     </div>
   </div>
 
