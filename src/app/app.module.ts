@@ -13,6 +13,7 @@ import { ArticlePreviewComponent } from './article-preview/article-preview.compo
 import { ArticleComponent } from './article/article.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user/user.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserComponent } from './user/user.component';
     ArticlePreviewComponent,
     ArticleComponent,
     UserListComponent,
-    UserComponent
+    UserComponent,
+    UserSettingsComponent
   ],
   imports: [
     BrowserModule,

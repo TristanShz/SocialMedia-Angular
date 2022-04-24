@@ -23,7 +23,7 @@ export class SideMenuComponent implements OnInit{
   }
 
   disconnect(){
-    localStorage.clear();
+    this.userConnectedService.disconnect();
     this.router.navigate(["/login"]);
   }
 }

@@ -3,7 +3,7 @@
   <div id="right-content">
     <h1>{{currentArticle?.titre}}</h1>
     <p>{{currentArticle?.contenu}}</p>
-    <p id="deleteArticle" *ngIf="currentArticle?.id === userConnected.user.id" (click)="deleteArticle(currentArticle.id_article)">
+    <p id="deleteArticle" *ngIf="currentArticle?.id === userConnected.user?.id" (click)="deleteArticle(currentArticle.id_article)">
       Supprimer l'article</p>
     <div id="line"></div>
 
@@ -15,7 +15,7 @@
       </form>
     <div id="comment" *ngFor="let comment of comments">
       <p>{{comment.contenu}}</p>
-      <p id="deleteComment" *ngIf="comment.id === userConnected.user.id" (click)="deleteComment(comment.id_commentaire)">supprimer</p>
+      <p id="deleteComment" *ngIf="comment.id === userConnected.user?.id" (click)="deleteComment(comment.id_commentaire)">supprimer</p>
   </div>
 
 </div>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import{ userInterface } from './Interfaces/userInterface'
+import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,11 +13,12 @@ export class UserConnectedService {
     })
   };
   userConnected?:userInterface;
-  user = JSON.parse(localStorage.getItem("user")!);
-  constructor(private http:HttpClient) {
+  user: { id:number, token: string } |null =JSON.parse(localStorage.getItem("user")!);
+  constructor(private http:HttpClient, private router:Router) {
   }
   getUser(){
-    if(this.user.token) {
+    this.user = JSON.parse(localStorage.getItem("user")!);
+    if(this.user) {
       const headers = {
         headers: new HttpHeaders({
           'Authorization': 'Bearer ' + this.user.token,
@@ -27,8 +29,14 @@ export class UserConnectedService {
           this.userConnected = user;
         });
     }else{
+      this.router.navigate(["/login"]);
       return 0;
     }
+  }
+
+  disconnect(){
+    localStorage.clear();
+    this.user = null;
   }
 
 }

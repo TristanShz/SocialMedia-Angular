@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import {userInterface} from "./Interfaces/userInterface";
 import {ArticlesInterface} from "./Interfaces/articlesInterface";
 import {CommentsInterface} from "./Interfaces/commentsInterface";
+import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
@@ -16,7 +17,7 @@ export class UserService {
     })
   };
   userList?:Array<userInterface>;
-  constructor(private http: HttpClient, private userConnected:UserConnectedService) { }
+  constructor(private http: HttpClient, private userConnected:UserConnectedService, private router:Router) { }
 
   addUser(user:object){
     const body = JSON.stringify(user);
@@ -33,7 +34,7 @@ export class UserService {
   getUser(id:number){
     const headers = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer '+ this.userConnected.user.token,
+        'Authorization': 'Bearer '+ this.userConnected.user?.token,
       })
     }
     return this.http.get<userInterface>(this.urlBase + `/${id}`, headers)
@@ -41,7 +42,7 @@ export class UserService {
   getUserArticles(id:number){
     const headers = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer '+ this.userConnected.user.token,
+        'Authorization': 'Bearer '+ this.userConnected.user?.token,
       })
     }
     return this.http.get<Array<ArticlesInterface>>(this.urlBase + `/${id}/article`, headers)
@@ -49,7 +50,7 @@ export class UserService {
   getUserComments(id:number){
     const headers = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer '+ this.userConnected.user.token,
+        'Authorization': 'Bearer '+ this.userConnected.user?.token,
       })
     }
     return this.http.get<Array<CommentsInterface>>(this.urlBase + `/${id}/comment`, headers)
@@ -57,12 +58,29 @@ export class UserService {
   getAllUsers(){
     const headers = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer '+ this.userConnected.user.token,
+        'Authorization': 'Bearer '+ this.userConnected.user?.token,
       })
     }
+    let that = this;
     return this.http.get<Array<userInterface>>(this.urlBase, headers)
-      .subscribe(users => {
-        this.userList = users;
+      .subscribe( {
+        next(users){
+          that.userList = users;
+        }})
+  }
+
+  deleteAccount(){
+    const headers = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer '+ this.userConnected.user?.token,
+      })
+    }
+    const that = this;
+    return this.http.delete(this.urlBase + `/${this.userConnected.user?.id}`, headers)
+      .subscribe({
+        next(){
+          that.router.navigate(["/"])
+        }
       })
   }
 }

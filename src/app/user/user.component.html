@@ -11,7 +11,7 @@
     <div id="bottomBlock">
       <div id="lastArticles">
         <h1>5 Derniers Articles : </h1>
-        <div id="article" *ngFor="let article of lastArticles; let index = index">
+        <div id="article" *ngFor="let article of lastArticles; let index = index" (click)="goToArticle(article.id_article)">
           <h3 *ngIf="index <5">{{article.titre}}</h3>
           <p *ngIf="index <5">{{article.contenu}}</p>
         </div>
@@ -21,6 +21,7 @@
         <h1>5 Derniers Commentaires : </h1>
         <div id="comment" *ngFor="let comment of lastComments; let index = index">
           <p *ngIf="index <5">{{comment.contenu}}</p>
+          <p id="goToArt" (click)="goToArticle(comment.id_article)">Article associé</p>
         </div>
       </div>
   </div>

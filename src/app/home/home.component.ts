@@ -3,6 +3,7 @@ import {UserConnectedService} from "../user-connected.service";
 import { ArticleService } from "../article.service";
 import {NgForm} from "@angular/forms";
 import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -12,10 +13,14 @@ import {UserService} from "../user.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public userConnectedService: UserConnectedService, public articleService: ArticleService, public userService:UserService) {
-    this.userConnectedService.getUser();
-    this.articleService.getArticles();
-    this.userService.getAllUsers();
+  constructor(public userConnectedService: UserConnectedService, public articleService: ArticleService, public userService:UserService,
+              private router:Router) {
+    if(userConnectedService.user){
+      this.articleService.getArticles();
+      this.userService.getAllUsers();
+      this.userConnectedService.getUser();
+    }else this.router.navigate(["/login"]).then(() => { alert("Veuillez vous connecter")});
+
   }
 
   ngOnInit(): void {

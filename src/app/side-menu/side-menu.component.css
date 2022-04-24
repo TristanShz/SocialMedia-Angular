@@ -49,3 +49,16 @@
 #disconnected:hover{
   cursor: pointer;
 }
+
+#settings{
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  opacity: 0.5;
+}
+
+#settings:hover{
+  cursor: pointer;
+  opacity: 1;
+}
+

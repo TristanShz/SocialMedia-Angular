@@ -13,7 +13,7 @@ export class CommentsService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + this.userConnected.user.token,
+      'Authorization': 'Bearer ' + this.userConnected.user?.token,
     })
   };
   articlesList?:Array<ArticlesInterface>;
@@ -26,12 +26,7 @@ export class CommentsService {
   }
 
   getComment(id:number){
-      const headers = {
-        headers: new HttpHeaders({
-          'Authorization': 'Bearer ' + this.userConnected.user.token,
-        })
-      }
-      return this.http.get<Array<CommentsInterface>>(this.urlBase + `/${id}/comment`, headers)
+      return this.http.get<Array<CommentsInterface>>(this.urlBase + `/${id}/comment`, this.httpOptions)
   }
 
   deleteComment(id:number){

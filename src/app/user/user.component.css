@@ -46,6 +46,10 @@ width: 500px;
   margin-bottom: 15px;
 }
 
+#article:hover{
+  transform:scale(1.1,1.1);
+  cursor: pointer;
+}
 #comment{
   width: 500px;
   height:auto;
@@ -53,4 +57,13 @@ width: 500px;
   background: rgba(255,255,255,0.6);
   padding: 35px 35px;
   margin-bottom: 15px;
+}
+
+#goToArt{
+  color: #8B84A3;
+  text-decoration: underline;
+}
+
+#goToArt:hover{
+  cursor: pointer;
 }

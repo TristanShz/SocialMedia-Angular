@@ -7,6 +7,7 @@ import {CommentsService} from "../comments.service";
 import { CommentsInterface } from "../Interfaces/commentsInterface"
 import {NgForm, NgModel} from "@angular/forms";
 import {UserConnectedService} from "../user-connected.service";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-article',
@@ -19,25 +20,30 @@ export class ArticleComponent implements OnInit {
   currentArticle!:ArticlesInterface;
   comments?:Array<CommentsInterface>;
   constructor(private articleService:ArticleService, private route: ActivatedRoute, private commentsService:CommentsService,
-              public userConnected:UserConnectedService, private router:Router) {
+              public userConnected:UserConnectedService, private router:Router, public userService:UserService) {
     this.idArticle = 0;
   }
 
   ngOnInit(): void {
-    let that = this;
-    this.route.params.subscribe(params => {
-      that.idArticle = parseInt(params['id']);
-    })
-    this.articleService.getOneArticle(this.idArticle)
-      .subscribe(article=>{
-        console.log(article);
-        this.currentArticle = article;
+    if(this.userConnected.user){
+      let that = this;
+      this.route.params.subscribe(params => {
+        that.idArticle = parseInt(params['id']);
       })
-    this.commentsService.getComment(this.idArticle)
-      .subscribe(comments=>{
-        console.log(comments);
-        this.comments= (comments);
-      })
+      this.articleService.getOneArticle(this.idArticle)
+        .subscribe(article=>{
+          console.log(article);
+          this.currentArticle = article;
+        })
+      this.commentsService.getComment(this.idArticle)
+        .subscribe(comments=>{
+          console.log(comments);
+          this.comments= (comments);
+        })
+    }else{
+      this.router.navigate(["/login"]).then(() => { alert("Veuillez vous connecter")});
+    }
+
   }
 
   addComment(contenu:NgForm){
@@ -73,11 +79,8 @@ export class ArticleComponent implements OnInit {
         this.router.navigate(["/home"]);
       })
   }
-
-
-
-
-
-
+  goToUser(id:number){
+    this.router.navigate(["/user/"+ id]);
+  }
 
 }
